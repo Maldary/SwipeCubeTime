@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class ArrowChecker : MonoBehaviour
 {
-    public List<Vector2> _arrowPressed = new List<Vector2>();
-    void Update()
+    public List<Vector2> PressedArrowList => _arrowPressed;
+    
+    
+    private List<Vector2> _arrowPressed = new List<Vector2>();
+
+    public void Cleanup()
+    {
+        _arrowPressed.Clear();
+    }
+    
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
