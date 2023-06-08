@@ -19,11 +19,15 @@ public class Timer : MonoBehaviour
 
         StartCoroutine(DecreaseTimer());
     }
+    
+        void UpdateTimerDisplay()
+        {
+            int seconds = Mathf.FloorToInt(currentTime);
+            int milliseconds = Mathf.FloorToInt((currentTime - seconds) * 97);
 
-    void UpdateTimerDisplay()
-    {
-        timerDisplay.text = currentTime.ToString("F1");
-    }
+            timerDisplay.text = string.Format("{0:d2}:{1:d2}", seconds, milliseconds);
+        }
+    
 
     IEnumerator DecreaseTimer()
     {
