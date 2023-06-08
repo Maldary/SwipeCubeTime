@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ArrowChecker : MonoBehaviour
 {
-    public List<Vector2> PressedArrowList => _arrowPressed;
+    public Queue<Vector2> PressedArrowList => _arrowPressed;
     
     
-    private List<Vector2> _arrowPressed = new List<Vector2>();
+    private Queue<Vector2> _arrowPressed = new Queue<Vector2>();
 
     public void Cleanup()
     {
@@ -19,25 +19,25 @@ public class ArrowChecker : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Debug.Log("Влево");
-            _arrowPressed.Add(new Vector2(-1, 0));
+            _arrowPressed.Enqueue(new Vector2(-1, 0));
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("Вправо");
-            _arrowPressed.Add(new Vector2(1, 0));
+            _arrowPressed.Enqueue(new Vector2(1, 0));
         }
         
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            _arrowPressed.Add(new Vector2(0, 1));
+            _arrowPressed.Enqueue(new Vector2(0, -1));
             Debug.Log("Вверх");
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("Вниз)");
-            _arrowPressed.Add(new Vector2(0, -1)); 
+            _arrowPressed.Enqueue(new Vector2(0, 1)); 
         }
     }
 }
