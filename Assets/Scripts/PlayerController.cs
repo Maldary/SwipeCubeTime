@@ -27,48 +27,20 @@ public class PlayerController : MonoBehaviour
 
     public void StartMove()
     {
-        _currentPosition = new Vector2(0, (float) Math.Ceiling((gridMaze.Height/2.0)));
-
-        Sequence sequence = DOTween.Sequence();
+        DOTween.defaultAutoPlay = AutoPlay.None;
         
-        foreach (var direction in arrowChecker.PressedArrowList)
+        Sequence sequence = DOTween.Sequence();
+
+        Vector3 position = transform.position;
+        
+        foreach (var aVector2 in arrowChecker.PressedArrowList)
         {
-            Vector3 selectedDirection = new Vector3(direction.y, 0, direction.x);
-
-            int stepCount = 0;
-
-            if (direction == Vector2.right)
-            {
-                stepCount = gridMaze.GetStepsToWallHorizontal(_currentPosition, true);
-                _currentPosition += new Vector2(stepCount, 0);
-                sequence.Append(transform.DOMoveZ(transform.position.z + stepCount, 1));
-                sequence.AppendInterval(1);
-                Debug.Log("Двигаюсь вправо");
-            }
-            else if(direction == Vector2.left)
-            {
-                stepCount = gridMaze.GetStepsToWallHorizontal(_currentPosition, false);
-                _currentPosition -= new Vector2(stepCount, 0);
-                sequence.Append(transform.DOMoveZ(transform.position.z - stepCount, 1));
-                sequence.AppendInterval(1);
-                Debug.Log("Двигаюсь влево");
-            }
-            else if(direction == Vector2.up)
-            {
-                stepCount = gridMaze.GetStepsToWallVertical(_currentPosition, true);
-                _currentPosition -= new Vector2(0, stepCount);
-                sequence.Append(transform.DOMoveX(transform.position.x - stepCount, 1));
-                sequence.AppendInterval(1);
-                Debug.Log("Двигаюсь вверх");
-            }
-            else if(direction == Vector2.down)
-            {
-                stepCount = gridMaze.GetStepsToWallVertical(_currentPosition, false);
-                _currentPosition += new Vector2(0, stepCount);
-                sequence.Append(transform.DOMoveX(transform.position.x + stepCount, 1));
-                sequence.AppendInterval(1);
-                Debug.Log("Двигаюсь вниз");
-            }
+            int stepCount = gridMaze.GetStepsCount(aVector2);
+            Debug.Log(stepCount);
+            
+            position += new Vector3(aVector2.y, 0, aVector2.x) * stepCount;
+            
+            sequence.Append(transform.DOMove(position, 0.25f).SetEase(Ease.InCirc));
         }
 
         sequence.Play();

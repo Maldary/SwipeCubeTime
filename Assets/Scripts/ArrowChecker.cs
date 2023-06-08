@@ -39,5 +39,6 @@ public class ArrowChecker : MonoBehaviour
             Debug.Log("Вниз)");
             _arrowPressed.Enqueue(new Vector2(0, 1)); 
         }
+        
     }
 }

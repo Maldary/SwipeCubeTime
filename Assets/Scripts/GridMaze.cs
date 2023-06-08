@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,29 +10,29 @@ public class GridMaze : MonoBehaviour
 
     private int[,] _gridArray = new int[,]
     {
-        /*{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-		{1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1},
-		{1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1},
-		{1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1},
-		{0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0},
-		{1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1},
-		{1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1},
-		{1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
-		{1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}*/
+  //       {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		// {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
+		// {1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1},
+		// {1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1},
+		// {1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1},
+		// {0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+		// {1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1},
+		// {1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1},
+		// {1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
+		// {1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1},
+		// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 
-		/*{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1},
-		{1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1},
-		{1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1},
-		{1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1},
-		{0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0},
-		{1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
-		{1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
-		{1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
-		{1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}*/
+		// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		// {1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1},
+		// {1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1},
+		// {1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1},
+		// {1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+		// {0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0},
+		// {1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
+		// {1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
+		// {1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1},
+		// {1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1},
+		// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 
 		/*{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1},
@@ -69,7 +70,7 @@ public class GridMaze : MonoBehaviour
 		{1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}*/
 
-		/*{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 		{1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
@@ -79,7 +80,7 @@ public class GridMaze : MonoBehaviour
 		{1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1},
 		{1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1},
 		{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}*/
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 
 		/*{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -309,24 +310,24 @@ public class GridMaze : MonoBehaviour
 		{1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1},
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}*/
 
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1},
-		{1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-		{1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1},
-		{0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
-		{1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1},
-		{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} 
+		// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		// {1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1},
+		// {1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1},
+		// {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+		// {1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1},
+		// {0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+		// {1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1},
+		// {1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1},
+		// {1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
+		// {1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1},
+		// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} 
 
     }; 
 
     private int _width;
     private int _height;
 
-    public int Height => _height;
+    private Vector2 _playerMatrixPos;
 
     void Start()
     {
@@ -343,44 +344,8 @@ public class GridMaze : MonoBehaviour
                 }
             }
         }
-    }
 
-    public int GetStepsToWallHorizontal(Vector2 currentPos, bool isRight)
-    {
-        int increment = isRight ? 1 : -1;
-
-        int counter = 0;
-        int x = (int) currentPos.x == 0 ? 0 : (int) currentPos.x - 1;
-        for (; x < _width; x += increment)
-        {
-            if (_gridArray[(int)currentPos.y , x] == 1)
-
-            {
-                return counter;
-            }
-
-            counter++;
-        }
-
-        return 0;
-    }
-
-    public int GetStepsToWallVertical(Vector2 currentPos, bool isBottom)
-    {
-        int increment = isBottom ? 1 : -1;
-        int y = (int) currentPos.y == 0 ? 0 : (int) currentPos.y - 1;
-        int counter = 0;
-        for (; y < _height; y += increment)
-        {
-            if (_gridArray[y, (int)currentPos.x] == 1)
-            {
-                return counter;
-            }
-
-            counter++;
-        }
-
-        return 0;
+        _playerMatrixPos.y = _height /2;
     }
 
     private GameObject CreateCube(int x, int y)
@@ -390,5 +355,65 @@ public class GridMaze : MonoBehaviour
             new Vector3(x - _width / 2, cubeObject.transform.localScale.y / 2, y - _height / 2);
 
         return cubeObject;
+    }
+
+    public int GetStepsCount(Vector2 direction)
+    {
+	    int counter = 0;
+	    // right
+	    if (direction.x == 1)
+	    {
+		    for (int i = (int) _playerMatrixPos.x + 1; i < _width; i+= (int)direction.x)
+		    {
+			    if (_gridArray[(int) _playerMatrixPos.y, i] == 1)
+			    {
+				    _playerMatrixPos += counter * direction;
+				    return counter;
+			    }
+
+			    counter++;
+		    }
+	    }
+	    else if (direction.x == -1)
+	    {
+		    for (int i = (int) _playerMatrixPos.x - 1; i >= 0; i+= (int)direction.x)
+		    {
+			    if (_gridArray[(int) _playerMatrixPos.y, i] == 1)
+			    {
+				    _playerMatrixPos += counter * direction;
+				    return counter;
+			    }
+
+			    counter++;
+		    }
+	    }
+	    else if (direction.y == 1)
+	    {
+		    for (int i = (int) _playerMatrixPos.y + 1; i < +_height; i+= (int)direction.y)
+		    {
+			    if (_gridArray[i, (int) _playerMatrixPos.x] == 1)
+			    {
+				    _playerMatrixPos += counter * direction;
+				    return counter;
+			    }
+
+			    counter++;
+		    }
+	    }
+	    else if(direction.y == -1)
+	    {
+		    for (int i = (int) _playerMatrixPos.y - 1; i >= 0; i+= (int)direction.y)
+		    {
+			    if (_gridArray[i, (int) _playerMatrixPos.x] == 1)
+			    {
+				    _playerMatrixPos += counter * direction;
+				    return counter;
+			    }
+
+			    counter++;
+		    }
+	    }
+
+	    return counter;
     }
 }
